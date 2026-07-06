@@ -73,7 +73,7 @@ A user opens the About/legal screen. They see **OKR Best Inc** as the copyright 
 
 - **FR-001**: The app's display name MUST read "O'talk" on the device home screen and app switcher on both iOS and Android. (iOS: `Mattermost` and `MattermostShare` plists; the `NotificationService` extension label is not branding and stays unchanged — see research R1.)
 - **FR-002**: The app icon and launch/splash screen MUST present O'talk visual identity, including light and dark variants where the platform provides them.
-- **FR-003**: All in-scope product-identity text currently referencing "Mattermost" MUST refer to "O'talk", per the mapping in the design doc (about label, onboarding welcome, add-server/extension messages, invite message, calls microphone prompt, calls notification name/title, managed-device security messages, server-upgrade message, ratings prompt).
+- **FR-003**: All in-scope product-identity text currently referencing "Mattermost" MUST refer to "O'talk", per the mapping in the design doc (about label, onboarding welcome, add-server/extension messages, invite message, calls microphone prompt, calls notification name/title, managed-device security messages, server-upgrade message, ratings prompt, share-extension channel error). 14 product-identity strings total in `en.json`.
 - **FR-004**: The company/legal copyright notice MUST attribute "OKR Best Inc" with the current year.
 - **FR-005**: The product website reference MUST point to https://okr.best.
 - **FR-006**: The default server display name on the add-server screen MUST default to "O'talk" when not overridden by managed configuration or an explicitly provided name.

@@ -55,7 +55,7 @@ _No blocking foundational work — the three user stories are independent. Proce
 
 **Independent test**: Walk onboarding, add-server, Settings, calls notification, ratings prompt — no product "Mattermost" wording in in-scope strings.
 
-- [ ] T013 [US2] In `assets/base/i18n/en.json`, change product-identity values to `O'talk` for keys: `about.mattermost`, `about.planNameLearn`, `extension.no_memberships.description`, `extension.no_servers.description`, `invite_people_to_team.message`, `mobile.calls_mic_error`, `mobile.calls.foreground_service.channel_name` ("O'talk Calls"), `mobile.calls.foreground_service.title`, `mobile.managed.not_secured.android`, `mobile.managed.not_secured.ios`, `mobile.server_upgrade.description`, `onboaring.welcome_description` (keep "open source platform" wording), `rate.title` ("Enjoying O'talk?")
+- [ ] T013 [US2] In `assets/base/i18n/en.json`, change product-identity values to `O'talk` for keys: `about.mattermost`, `about.planNameLearn`, `extension.no_memberships.description`, `extension.no_servers.description`, `invite_people_to_team.message`, `mobile.calls_mic_error`, `mobile.calls.foreground_service.channel_name` ("O'talk Calls"), `mobile.calls.foreground_service.title`, `mobile.managed.not_secured.android`, `mobile.managed.not_secured.ios`, `mobile.server_upgrade.description`, `onboaring.welcome_description` (keep "open source platform" wording), `rate.title` ("Enjoying O'talk?"), `share_extension.channel_error` ("…open **O'talk** to join a team.")
 - [ ] T014 [US2] Set `DefaultServerName` to `O'talk` in `assets/base/config.json`
 
 **Checkpoint**: Onboarding/add-server/calls/rating all read O'talk.

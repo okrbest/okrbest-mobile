@@ -31,7 +31,7 @@ new code paths or data. Authoritative per-string/asset mapping lives in
 
 **Constraints**: Edit only `en.json` among i18n files; preserve OSS attribution strings/URLs; do NOT change technical identifiers (scheme, bundle/app IDs, package, App Group, push topic, deep-link host); "O'talk" apostrophe must render/escape correctly in JSON, native plists, and Android XML (escape as `O\'talk` in Android strings.xml)
 
-**Scale/Scope**: ~13 product-identity strings + 1 copyright string in `en.json`; 2 keys in `config.json`; 4 native display-name locations (app.json, 2 iOS plists, Android strings.xml); image asset sets (app icon, splash light/dark, in-app logo) across iOS + Android
+**Scale/Scope**: 14 product-identity strings + 1 copyright string in `en.json`; 2 keys in `config.json`; 4 native display-name locations (app.json, 2 iOS plists, Android strings.xml); image asset sets (app icon, splash light/dark, in-app logo) across iOS + Android
 
 ## Constitution Check
 

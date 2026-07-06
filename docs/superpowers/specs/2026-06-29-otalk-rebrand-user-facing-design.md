@@ -47,6 +47,7 @@ Mattermost 포크인 본 앱에서 **최종 사용자가 인지하는 브랜드 
 - `mobile.server_upgrade.description`
 - `onboaring.welcome_description` ("O'talk is an open source platform …" — "open source" 표현 유지, 이름만 교체)
 - `rate.title` ("Enjoying O'talk?")
+- `share_extension.channel_error` ("…open **O'talk** to join a team." — 제품/앱 지칭)
 
 **→ OKR Best Inc (회사/법적)**
 - `settings.about.copyright` → `Copyright {currentYear} OKR Best Inc. All rights reserved` (시작 연도 2026 = 현재 연도이므로 범위 표기 생략, 단일 `{currentYear}`)
