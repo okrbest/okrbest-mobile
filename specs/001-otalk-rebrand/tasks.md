@@ -12,9 +12,9 @@ MCP (see [quickstart.md](./quickstart.md)). Authoritative mapping:
 
 ## Phase 1: Setup
 
-- [ ] T001 Ensure work is on a dedicated implementation branch for `001-otalk-rebrand` (branch off current `main`)
-- [ ] T002 Obtain O'talk image source files from the user and stage them: app-icon master (1024×1024, no alpha), splash logo (light + dark), in-app logo — required before Phase 3 asset tasks
-- [ ] T003 [P] Capture baseline: grep in-scope "Mattermost" occurrences (`assets/base/i18n/en.json`, native display-name files, `assets/base/config.json`) to confirm the exact change set vs the design doc
+- [x] T001 Ensure work is on a dedicated implementation branch for `001-otalk-rebrand` (branch off current `main`)
+- [x] T002 Obtain O'talk image source files from the user and stage them: app-icon master (1024×1024, no alpha), splash logo (light + dark), in-app logo — required before Phase 3 asset tasks
+- [x] T003 [P] Capture baseline: grep in-scope "Mattermost" occurrences (`assets/base/i18n/en.json`, native display-name files, `assets/base/config.json`) to confirm the exact change set vs the design doc
 
 ## Phase 2: Foundational
 
@@ -28,24 +28,24 @@ _No blocking foundational work — the three user stories are independent. Proce
 
 ### Display name
 
-- [ ] T004 [P] [US1] Set `displayName` to `O'talk` in `app.json`
-- [ ] T005 [P] [US1] Set `CFBundleDisplayName` to `O'talk` in `ios/Mattermost/Info.plist`
-- [ ] T006 [P] [US1] Set `CFBundleDisplayName` to `O'talk` in `ios/MattermostShare/Info.plist` (do NOT touch `ios/NotificationService/Info.plist` — research R1)
-- [ ] T007 [P] [US1] Set `app_name` to `O\'talk` (escaped) in `android/app/src/main/res/values/strings.xml`
+- [x] T004 [P] [US1] Set `displayName` to `O'talk` in `app.json`
+- [x] T005 [P] [US1] Set `CFBundleDisplayName` to `O'talk` in `ios/Mattermost/Info.plist`
+- [x] T006 [P] [US1] Set `CFBundleDisplayName` to `O'talk` in `ios/MattermostShare/Info.plist` (do NOT touch `ios/NotificationService/Info.plist` — research R1)
+- [x] T007 [P] [US1] Set `app_name` to `O\'talk` (escaped) in `android/app/src/main/res/values/strings.xml`
 
 ### App icon
 
-- [ ] T008 [US1] Generate all sizes and replace `ios/Mattermost/Images.xcassets/AppIcon.appiconset/*` from the O'talk master (match the set's `Contents.json` slots)
-- [ ] T009 [P] [US1] Replace Android launcher icons in `android/app/src/main/res/mipmap-*/` (`ic_launcher.png`, `ic_launcher_round.png`, `ic_launcher_foreground.png`, `ic_launcher_background.png`) and verify `mipmap-anydpi-v26/*.xml` adaptive icon references
+- [x] T008 [US1] Generate all sizes and replace `ios/Mattermost/Images.xcassets/AppIcon.appiconset/*` from the O'talk master (match the set's `Contents.json` slots)
+- [x] T009 [P] [US1] Replace Android launcher icons in `android/app/src/main/res/mipmap-*/` (`ic_launcher.png`, `ic_launcher_round.png`, `ic_launcher_foreground.png`, `ic_launcher_background.png`) and verify `mipmap-anydpi-v26/*.xml` adaptive icon references
 
 ### Splash
 
-- [ ] T010 [US1] Replace iOS `ios/Mattermost/Images.xcassets/SplashIcon.imageset/*` (light/dark @2x/@3x) and `SplashBackground.imageset/*`; regenerate from `assets/base/release/splash_screen/` source where used
-- [ ] T011 [P] [US1] Replace Android splash drawables under `android/app/src/main/res/drawable*/` (including `drawable-night-*` dark variants)
+- [x] T010 [US1] Replace iOS `ios/Mattermost/Images.xcassets/SplashIcon.imageset/*` (light/dark @2x/@3x) and `SplashBackground.imageset/*`; regenerate from `assets/base/release/splash_screen/` source where used
+- [x] T011 [P] [US1] Replace Android splash drawables under `android/app/src/main/res/drawable*/` (including `drawable-night-*` dark variants)
 
 ### In-app logo
 
-- [ ] T012 [P] [US1] Replace `assets/base/images/logo.png` and `assets/base/images/icon.png` with O'talk artwork
+- [x] T012 [P] [US1] Replace `assets/base/images/logo.png` and `assets/base/images/icon.png` with O'talk artwork
 
 **Checkpoint**: Build runs; home-screen name = O'talk; icon + splash show O'talk (light/dark).
 
@@ -55,8 +55,8 @@ _No blocking foundational work — the three user stories are independent. Proce
 
 **Independent test**: Walk onboarding, add-server, Settings, calls notification, ratings prompt — no product "Mattermost" wording in in-scope strings.
 
-- [ ] T013 [US2] In `assets/base/i18n/en.json`, change product-identity values to `O'talk` for keys: `about.mattermost`, `about.planNameLearn`, `extension.no_memberships.description`, `extension.no_servers.description`, `invite_people_to_team.message`, `mobile.calls_mic_error`, `mobile.calls.foreground_service.channel_name` ("O'talk Calls"), `mobile.calls.foreground_service.title`, `mobile.managed.not_secured.android`, `mobile.managed.not_secured.ios`, `mobile.server_upgrade.description`, `onboaring.welcome_description` (keep "open source platform" wording), `rate.title` ("Enjoying O'talk?"), `share_extension.channel_error` ("…open **O'talk** to join a team.")
-- [ ] T014 [US2] Set `DefaultServerName` to `O'talk` in `assets/base/config.json`
+- [x] T013 [US2] In `assets/base/i18n/en.json`, change product-identity values to `O'talk` for keys: `about.mattermost`, `about.planNameLearn`, `extension.no_memberships.description`, `extension.no_servers.description`, `invite_people_to_team.message`, `mobile.calls_mic_error`, `mobile.calls.foreground_service.channel_name` ("O'talk Calls"), `mobile.calls.foreground_service.title`, `mobile.managed.not_secured.android`, `mobile.managed.not_secured.ios`, `mobile.server_upgrade.description`, `onboaring.welcome_description` (keep "open source platform" wording), `rate.title` ("Enjoying O'talk?"), `share_extension.channel_error` ("…open **O'talk** to join a team.")
+- [x] T014 [US2] Set `DefaultServerName` to `O'talk` in `assets/base/config.json`
 
 **Checkpoint**: Onboarding/add-server/calls/rating all read O'talk.
 
@@ -66,17 +66,17 @@ _No blocking foundational work — the three user stories are independent. Proce
 
 **Independent test**: Open Settings → About; copyright = OKR Best Inc, website = okr.best, OSS/community lines unchanged.
 
-- [ ] T015 [US3] In `assets/base/i18n/en.json`, set `settings.about.copyright` to `Copyright {currentYear} OKR Best Inc. All rights reserved`
-- [ ] T016 [US3] Set `WebsiteURL` to `https://okr.best` in `assets/base/config.json`
-- [ ] T017 [US3] Verify retained-unchanged: `settings.notice_text`, `settings.about.powered_by`, `about.teamEditionLearn` in `en.json` and `ServerNoticeURL`/`MobileNoticeURL` in `config.json` are NOT modified
+- [x] T015 [US3] In `assets/base/i18n/en.json`, set `settings.about.copyright` to `Copyright {currentYear} OKR Best Inc. All rights reserved`
+- [x] T016 [US3] Set `WebsiteURL` to `https://okr.best` in `assets/base/config.json`
+- [x] T017 [US3] Verify retained-unchanged: `settings.notice_text`, `settings.about.powered_by`, `about.teamEditionLearn` in `en.json` and `ServerNoticeURL`/`MobileNoticeURL` in `config.json` are NOT modified
 
 **Checkpoint**: About screen shows OKR Best Inc + okr.best; OSS lines preserved.
 
 ## Phase 6: Polish & Verification
 
-- [ ] T018 [P] Run `npm run tsc` — type-check passes
-- [ ] T019 [P] Run `npm run fix` — lint passes
-- [ ] T020 Guard review on `git diff`: zero in-scope product "Mattermost" references remain; only `en.json` among `assets/base/i18n/`; technical identifiers (scheme, bundle/app IDs, package, App Group, push topic, deep-link host) and `:mattermost:` emoji untouched
+- [x] T018 [P] Run `npm run tsc` — type-check passes
+- [x] T019 [P] Run `npm run fix` — lint passes
+- [x] T020 Guard review on `git diff`: zero in-scope product "Mattermost" references remain; only `en.json` among `assets/base/i18n/`; technical identifiers (scheme, bundle/app IDs, package, App Group, push topic, deep-link host) and `:mattermost:` emoji untouched
 - [ ] T021 Mobile MCP on-device verification per `quickstart.md` steps 1–8; capture screenshots for steps 1, 2, 3, 6 as completion evidence
 
 ## Dependencies & Execution

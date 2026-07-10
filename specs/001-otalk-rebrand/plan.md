@@ -71,7 +71,7 @@ specs/001-otalk-rebrand/
 ```text
 app.json                                              # displayName → O'talk
 assets/base/
-├── i18n/en.json                                      # 13 product strings + copyright
+├── i18n/en.json                                      # 14 product strings + copyright
 ├── config.json                                       # WebsiteURL, DefaultServerName
 └── images/{logo.png, icon.png}                       # in-app logo
 ios/

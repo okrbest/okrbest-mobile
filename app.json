@@ -1,6 +1,6 @@
 {
   "name": "Mattermost",
-  "displayName": "Mattermost",
+  "displayName": "O'talk",
   "expo": {
     "scheme": "mattermost",
     "plugins": [
