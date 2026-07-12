@@ -326,7 +326,10 @@ Located at `libraries/@mattermost/`:
 - Don't set style properties to their default values (e.g., `marginBottom: 0`) — it's dead code
 
 ### Localization (i18n)
-- **CRITICAL**: Only update `en.json` - never modify other language files or Weblate gets corrupted
+- **`en.json` is the canonical source** for message IDs and default messages. New keys are added here first (via `defineMessages()` + `npm run i18n-extract`).
+- **`ko.json` is directly maintained in this fork** (full coverage, kept in `en.json` key order). When changing or adding user-facing strings in `en.json`, update `ko.json` in the same change.
+- **Other locale files**: do not hand-edit translations, with one exception — the **rebranding rule** below applies to every locale.
+- **Rebranding rule (all locales)**: product-identity strings must say **O'talk** (never Mattermost, including transliterations like 매터모스트), and the legal copyright is `Copyright {currentYear} OKR Best Inc. All rights reserved`. **Exceptions (must keep Mattermost — OSS/trademark attribution)**: `settings.notice_text`, `settings.about.powered_by`, `about.teamEditionLearn`, and the `:mattermost:` emoji code. This fork does not feed Weblate.
 - **Adding new strings**: Define the message ID and defaultMessage in code using `defineMessages()`, then run `npm run i18n-extract` to automatically add them to `en.json`
 - Default messages in code must match JSON translations exactly, including newlines
 - Translation IDs should be descriptive enough for translators to understand context
