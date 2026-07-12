@@ -467,6 +467,6 @@ At each gate, **recommend** a commit and let the user decide each time:
 
 <!-- SPECKIT START -->
 For additional context about technologies to be used, project structure,
-shell commands, and other important information, read the current plan:
-`specs/001-otalk-rebrand/plan.md`
+shell commands, and other important information, read the current plan
+at specs/002-otalk-self-distribution/plan.md
 <!-- SPECKIT END -->
