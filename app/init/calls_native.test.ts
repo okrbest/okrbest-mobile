@@ -127,7 +127,7 @@ describe('onVoIPTokenUpdated', () => {
     });
 
     // The shared expo-application mock in test/setup.ts sets applicationId
-    // to 'com.mattermost.rnbeta', so isBetaApp is true by default in tests.
+    // to 'com.okrbest.otalk', so isBetaApp is true by default in tests.
     it('stores beta-prefixed token under the default (beta) test config', async () => {
         const {onVoIPTokenUpdated} = loadAndInit();
         await onVoIPTokenUpdated({token: 'abc123'});

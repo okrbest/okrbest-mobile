@@ -12,7 +12,7 @@
 #
 # Environment:
 #   MAESTRO_BIN          — default ~/.maestro/bin/maestro
-#   MAESTRO_APP_ID       — default com.mattermost.rnbeta
+#   MAESTRO_APP_ID       — default com.okrbest.otalk
 #   FLOW_PATH            — optional; space-separated flow dirs (default: detox/maestro/flows/* categories)
 #   SITE_1_URL, TEST_*   — passed through to maestro --env
 #   MAESTRO_DRIVER_STARTUP_TIMEOUT — default 180000 (Maestro CI recommendation)
@@ -29,7 +29,7 @@ OUTPUT_DIR="build"
 ARTIFACTS_DIR="build/maestro-artifacts"
 MERGED_XML="$OUTPUT_DIR/maestro-report.xml"
 MAESTRO_BIN="${MAESTRO_BIN:-$HOME/.maestro/bin/maestro}"
-MAESTRO_APP_ID="${MAESTRO_APP_ID:-com.mattermost.rnbeta}"
+MAESTRO_APP_ID="${MAESTRO_APP_ID:-com.okrbest.otalk}"
 export MAESTRO_DRIVER_STARTUP_TIMEOUT="${MAESTRO_DRIVER_STARTUP_TIMEOUT:-180000}"
 
 usage() {

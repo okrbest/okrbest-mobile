@@ -158,11 +158,11 @@ install_app() {
         # both the main APK and the test APK are already present on the device).
         adb install -r ../android/app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk
     fi
-    adb shell pm list packages | grep "com.mattermost.rnbeta" && echo "App is installed." || echo "App is not installed."
+    adb shell pm list packages | grep "com.okrbest.otalk" && echo "App is installed." || echo "App is not installed."
 }
 
 grant_android_runtime_permissions() {
-    local bundle_id="com.mattermost.rnbeta"
+    local bundle_id="com.okrbest.otalk"
     adb shell pm grant "$bundle_id" android.permission.POST_NOTIFICATIONS 2>/dev/null || true
     adb shell pm grant "$bundle_id" android.permission.RECORD_AUDIO 2>/dev/null || true
     adb shell pm grant "$bundle_id" android.permission.CAMERA 2>/dev/null || true

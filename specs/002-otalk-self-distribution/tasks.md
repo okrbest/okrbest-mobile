@@ -11,9 +11,9 @@ the FR-004 identifier audit. Identity values: [contracts/app-identity.md](./cont
 
 ## Phase 1: Setup
 
-- [ ] T001 Create implementation branch for `002-otalk-self-distribution` off the current mainline
+- [X] T001 Create implementation branch for `002-otalk-self-distribution` off the current mainline
 - [ ] T002 [P] ⚠️ EXTERNAL Kick off account provisioning: Apple Developer Program (org, D-U-N-S), Google Play Console (org), Firebase project — record owner + status in the task; blocks US2/US3 only
-- [ ] T003 [P] Capture baseline identifier audit: `grep -rn "com\.mattermost\.rnbeta\|com\.mattermost\.rn\b"` (excluding node_modules/build/dist) saved as evidence; confirm the ~106-reference inventory in research.md R3 still matches
+- [X] T003 [P] Capture baseline identifier audit: `grep -rn "com\.mattermost\.rnbeta\|com\.mattermost\.rn\b"` (excluding node_modules/build/dist) saved as evidence; confirm the ~106-reference inventory in research.md R3 still matches
 
 ## Phase 2: Foundational
 
@@ -27,25 +27,25 @@ _No blocking foundational work — US1 is repo-only; US2/US3 gate on T002 extern
 
 ### iOS identity
 
-- [ ] T004 [US1] Set `PRODUCT_BUNDLE_IDENTIFIER` for all 3 targets (main → `com.okrbest.otalk`, NotificationService → `.NotificationService`, MattermostShare → `.MattermostShare` suffixes) in `ios/Mattermost.xcodeproj/project.pbxproj` (all build configurations)
-- [ ] T005 [P] [US1] Update `ios/Mattermost/Mattermost.entitlements`: App Group `group.com.okrbest.otalk`, iCloud container `iCloud.com.okrbest.otalk`, keychain access group per contract
-- [ ] T006 [P] [US1] Update `ios/MattermostShare/MattermostShare.entitlements` and `ios/NotificationService/NotificationService.entitlements` to the same App Group/keychain values
-- [ ] T007 [P] [US1] Update identifier-bearing values in `ios/Mattermost/Info.plist`, `ios/MattermostShare/Info.plist`, `ios/NotificationService/Info.plist` (bundle-ID-derived keys only; URL schemes stay — FR-010)
+- [X] T004 [US1] Set `PRODUCT_BUNDLE_IDENTIFIER` for all 3 targets (main → `com.okrbest.otalk`, NotificationService → `.NotificationService`, MattermostShare → `.MattermostShare` suffixes) in `ios/Mattermost.xcodeproj/project.pbxproj` (all build configurations)
+- [X] T005 [P] [US1] Update `ios/Mattermost/Mattermost.entitlements`: App Group `group.com.okrbest.otalk`, iCloud container `iCloud.com.okrbest.otalk`, keychain access group per contract
+- [X] T006 [P] [US1] Update `ios/MattermostShare/MattermostShare.entitlements` and `ios/NotificationService/NotificationService.entitlements` to the same App Group/keychain values
+- [X] T007 [P] [US1] Update identifier-bearing values in `ios/Mattermost/Info.plist`, `ios/MattermostShare/Info.plist`, `ios/NotificationService/Info.plist` (bundle-ID-derived keys only; URL schemes stay — FR-010)
 
 ### Android identity
 
-- [ ] T008 [US1] Set `applicationId "com.okrbest.otalk"` in `android/app/build.gradle`; keep `namespace`/Java package unchanged (research R1); verify manifest placeholders and FCM default channel still resolve
+- [X] T008 [US1] Set `applicationId "com.okrbest.otalk"` in `android/app/build.gradle`; keep `namespace`/Java package unchanged (research R1); verify manifest placeholders and FCM default channel still resolve
 
 ### Config, env, and references
 
-- [ ] T009 [P] [US1] Update identity values in `fastlane/env_vars_example` and `fastlane/.env.{ios,android}.{beta,pr,release}` per research R6 map (`MAIN_APP_IDENTIFIER`, `EXTENSION_APP_IDENTIFIER`, `MATCH_APP_IDENTIFIER`, `SUPPLY_PACKAGE_NAME`, `IOS_APP_GROUP`, `IOS_ICLOUD_CONTAINER`, `APP_NAME`)
-- [ ] T010 [P] [US1] Update hardcoded package/bundle references in `detox/` scripts (`create_android_emulator.sh`, `scripts/preboot_ios_simulator.sh`, `maestro/scripts/*.sh`, `e2e/test/setup.ts`) and `test/setup.ts`, `app/init/calls_native.test.ts`
-- [ ] T011 [P] [US1] Review `MATTERMOST_BUNDLE_IDS` gates: `app/screens/settings/about/about.tsx` and identifier usage in `app/database/manager/index.ts` — confirm non-Mattermost branch behavior is correct for O'talk (research R4); leave constants intact
-- [ ] T012 [P] [US1] Write the URL-scheme compatibility analysis (FR-010) at `specs/002-otalk-self-distribution/url-scheme-compatibility.md` covering every coupling in research R5 (config.json AuthUrlScheme(s), Info.plist CFBundleURLSchemes, AndroidManifest scheme filters, DEFAULT_AUTOLINKED_URL_SCHEMES, server SSO redirect allow-list) + the coordinated-change plan for a future phase
+- [X] T009 [P] [US1] Update identity values in `fastlane/env_vars_example` and `fastlane/.env.{ios,android}.{beta,pr,release}` per research R6 map (`MAIN_APP_IDENTIFIER`, `EXTENSION_APP_IDENTIFIER`, `MATCH_APP_IDENTIFIER`, `SUPPLY_PACKAGE_NAME`, `IOS_APP_GROUP`, `IOS_ICLOUD_CONTAINER`, `APP_NAME`)
+- [X] T010 [P] [US1] Update hardcoded package/bundle references in `detox/` scripts (`create_android_emulator.sh`, `scripts/preboot_ios_simulator.sh`, `maestro/scripts/*.sh`, `e2e/test/setup.ts`) and `test/setup.ts`, `app/init/calls_native.test.ts`
+- [X] T011 [P] [US1] Review `MATTERMOST_BUNDLE_IDS` gates: `app/screens/settings/about/about.tsx` and identifier usage in `app/database/manager/index.ts` — confirm non-Mattermost branch behavior is correct for O'talk (research R4); leave constants intact
+- [X] T012 [P] [US1] Write the URL-scheme compatibility analysis (FR-010) at `specs/002-otalk-self-distribution/url-scheme-compatibility.md` covering every coupling in research R5 (config.json AuthUrlScheme(s), Info.plist CFBundleURLSchemes, AndroidManifest scheme filters, DEFAULT_AUTOLINKED_URL_SCHEMES, server SSO redirect allow-list) + the coordinated-change plan for a future phase
 
 ### Verify (US1 gate)
 
-- [ ] T013 [US1] Run identifier audit against contract invariant 4; attach output showing only documented exceptions (FR-004)
+- [X] T013 [US1] Run identifier audit against contract invariant 4; attach output showing only documented exceptions (FR-004)
 - [ ] T014 [US1] On-emulator/simulator verification per quickstart US1 steps 1–6 (coexistence with Mattermost app, login, share-extension post, deep link + SSO round-trip); capture evidence
 
 **Checkpoint**: app is fully functional under the new identity with dev signing — MVP delivered.

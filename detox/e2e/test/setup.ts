@@ -9,7 +9,7 @@ import {ClaudePromptHandler} from '@support/pilot/ClaudePromptHandler';
 import {System, User} from '@support/server_api';
 import {siteOneUrl} from '@support/test_config';
 
-const BUNDLE_ID = 'com.mattermost.rnbeta';
+const BUNDLE_ID = 'com.okrbest.otalk';
 
 function getSimulatorId(): string {
     try {
@@ -75,7 +75,7 @@ function clearIOSAppData(): void {
     }
 
     if (!cachedAppGroupContainer) {
-        cachedAppGroupContainer = resolveContainerPath(simId, 'group.com.mattermost.rnbeta');
+        cachedAppGroupContainer = resolveContainerPath(simId, 'group.com.okrbest.otalk');
     }
     if (cachedAppGroupContainer) {
         if (existsSync(cachedAppGroupContainer)) {

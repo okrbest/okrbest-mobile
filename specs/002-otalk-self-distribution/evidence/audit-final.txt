@@ -1,0 +1,23 @@
+app/screens/settings/about/about.tsx:36:const MATTERMOST_BUNDLE_IDS = ['com.mattermost.rnbeta', 'com.mattermost.rn'];
+app/database/manager/index.ts:583:    * Android Device: file:///data/user/0/com.mattermost.rnbeta/files/databases
+android/app/build.gradle:105:    namespace "com.mattermost.rnbeta"
+android/app/src/main/java/com/mattermost/helpers/CustomPushNotificationHelper.java:31:import com.mattermost.rnbeta.*;
+android/app/src/main/java/com/mattermost/rnbeta/MainApplication.kt:1:package com.mattermost.rnbeta
+android/app/src/main/java/com/mattermost/rnbeta/CustomPushNotification.kt:1:package com.mattermost.rnbeta
+android/app/src/main/java/com/mattermost/rnbeta/NotificationDismissService.java:1:package com.mattermost.rnbeta;
+android/app/google-services.json:13:          "package_name": "com.mattermost.rn"
+android/app/google-services.json:38:                "bundle_id": "com.mattermost.rn"
+android/app/google-services.json:49:          "package_name": "com.mattermost.rnbeta"
+android/app/google-services.json:74:                "bundle_id": "com.mattermost.rn"
+android/app/google-services.json:110:                "bundle_id": "com.mattermost.rn"
+android/app/src/androidTest/java/com/mattermost/rnbeta/DetoxTest.java:1:package com.mattermost.rnbeta;
+android/app/src/main/java/com/mattermost/rnbeta/NotificationReplyBroadcastReceiver.java:1:package com.mattermost.rnbeta;
+android/app/src/main/java/com/mattermost/rnbeta/ReceiptDelivery.java:1:package com.mattermost.rnbeta;
+android/app/src/main/java/com/mattermost/rnbeta/MainActivity.kt:1:package com.mattermost.rnbeta
+
+# === Exception classification (contract invariant 4) ===
+# android/.../java/com/mattermost/** + build.gradle namespace (11): Java package kept per research R1 / invariant 3
+# app/screens/settings/about/about.tsx (1): MATTERMOST_BUNDLE_IDS white-label gate — kept per R4 / T011
+# app/database/manager/index.ts (1): JSDoc comment example path — non-functional, T011
+# android/app/google-services.json (5): legacy Firebase client entries — inert; whole file replaced in T015 (US2)
+# RESULT: 0 undocumented functional references — FR-004 PASS
