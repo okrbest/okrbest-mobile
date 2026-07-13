@@ -75,7 +75,7 @@ jobs:
     outputs:
       e2e_override: ${{ steps.policy.outputs.e2e_override }}
     steps:
-      - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
       - name: Cancel superseded E2E runs on this branch
         uses: ./.github/actions/cancel-e2e-runs
         with:
@@ -148,7 +148,7 @@ jobs:
       contents: read
       statuses: write
     steps:
-      - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
         with:
           ref: ${{ inputs.MOBILE_VERSION }}
       - uses: ./.github/actions/update-commit-status
@@ -171,7 +171,7 @@ jobs:
       contents: read
       statuses: write
     steps:
-      - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
         with:
           ref: ${{ inputs.MOBILE_VERSION }}
       - uses: ./.github/actions/update-commit-status
@@ -194,7 +194,7 @@ jobs:
       contents: read
       statuses: write
     steps:
-      - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
         with:
           ref: ${{ inputs.MOBILE_VERSION }}
       - uses: ./.github/actions/update-commit-status
@@ -222,7 +222,7 @@ jobs:
       actions: write
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
         with:
           ref: ${{ inputs.MOBILE_VERSION }}
 
@@ -268,7 +268,7 @@ jobs:
         run: docker system prune -af
 
       - name: Checkout Repository
-        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
         with:
           ref: ${{ inputs.MOBILE_VERSION }}
 
@@ -284,7 +284,7 @@ jobs:
       # PR + release workflows share cache. Saves 3-5 min on warm runs by
       # skipping gradle plugin resolution + Maven dep downloads.
       - name: Cache Gradle dependencies
-        uses: actions/cache@27d5ce7f107fe9357f9df03efb73ab90386fccae # v5.0.5
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
         with:
           path: /home/runner/.gradle/caches/modules-2/
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
@@ -322,7 +322,7 @@ jobs:
         run: docker system prune -af
 
       - name: Checkout Repository
-        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
         with:
           ref: ${{ inputs.MOBILE_VERSION }}
 
@@ -404,7 +404,7 @@ jobs:
           SITE_3_URL: ${{ inputs.SITE_3_URL }}
 
       - name: Checkout Repository
-        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
         with:
           ref: ${{ inputs.MOBILE_VERSION }}
           persist-credentials: false
@@ -415,7 +415,7 @@ jobs:
       # download this artifact.
       - name: Cache demo plugin fixture
         id: demo-plugin-cache
-        uses: actions/cache@27d5ce7f107fe9357f9df03efb73ab90386fccae # v5.0.5
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
         with:
           path: detox/e2e/support/fixtures/mattermost-plugin-demo-v0.11.1-linux-amd64.tar.gz
           key: mattermost-plugin-demo-linux-amd64-v0.11.1
@@ -513,7 +513,7 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
         with:
           ref: ${{ inputs.MOBILE_VERSION }}
 

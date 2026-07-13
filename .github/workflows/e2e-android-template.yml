@@ -151,7 +151,7 @@ jobs:
       workflow_hash: ${{ steps.resolve-device.outputs.WORKFLOW_HASH }}
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
         with:
           ref: ${{ inputs.MOBILE_VERSION }}
 
@@ -192,7 +192,7 @@ jobs:
       matrix: ${{ fromJSON(needs.generate-specs.outputs.specs) }}
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
         with:
           ref: ${{ inputs.MOBILE_VERSION }}
 
@@ -212,7 +212,7 @@ jobs:
         uses: ./.github/actions/prepare-node-deps
 
       - name: Cache detox node_modules
-        uses: actions/cache@27d5ce7f107fe9357f9df03efb73ab90386fccae # v5.0.5
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
         with:
           path: detox/node_modules
           key: ${{ runner.os }}-detox-deps-${{ hashFiles('detox/package-lock.json') }}
@@ -268,7 +268,7 @@ jobs:
       # SDK dirs often fails with exit code 2 when paths already exist on the image.
       - name: Cache Android SDK components
         id: android-sdk-cache
-        uses: actions/cache@27d5ce7f107fe9357f9df03efb73ab90386fccae # v5.0.5
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
         with:
           path: .android-sdk-cache
           key: android-sdk-${{ inputs.android_api_level }}-google-apis-x86_64-v2
@@ -326,7 +326,7 @@ jobs:
 
       # CI AVDs live under detox/.android/avd (see create_android_emulator.sh), not ~/.android/avd.
       - name: Cache Android Emulator & AVD
-        uses: actions/cache@27d5ce7f107fe9357f9df03efb73ab90386fccae # v5.0.5
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
         with:
           path: |
             detox/.android
@@ -400,7 +400,7 @@ jobs:
       PERCENTAGE: ${{ steps.summary.outputs.PERCENTAGE }}
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
         with:
           ref: ${{ inputs.MOBILE_VERSION }}
 
