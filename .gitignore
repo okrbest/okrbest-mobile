@@ -145,3 +145,5 @@ detox/maestro/.maestro-test-env*.bak
 
 # spec-kit integration catalog cache (transient)
 .specify/integrations/.cache/
+
+.e2e-debug/
