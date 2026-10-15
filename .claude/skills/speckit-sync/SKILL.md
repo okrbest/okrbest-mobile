@@ -81,6 +81,20 @@ cherry-pick하고, 신호에 걸리는 커밋만 정밀 분석·대화형 승인
 
 **정밀 분석 레인** — 조건 하나라도 미달이면 2-3으로 간다.
 
+**상설 기준 (2026-10-15 초기 캐치업 세션에서 사용자 승인)** — 아래 계열은 정밀 레인
+조건에 걸려도 개별 승인 없이 처리하고, 세션 마감 보고에 목록만 남긴다:
+
+- **제품 기능 커밋**: 충돌 없음 + 포크 무접촉 + 위험 경로 무접촉이면 규모 무관 cherry-pick.
+- **버전 범프** ("Bump app build/version number"): cherry-pick. 배포 번호는 fastlane이 덮어쓴다.
+- **e2e·CI 인프라** (.github workflows, detox/**, .cursor/** 등): cherry-pick/adapt.
+  잔여 충돌은 포크 보호 항목(번들 식별자, AGENTS.md 등)을 보존하는 방향으로 기계적 해소.
+- **Weblate 번역 커밋**: adapt — ko는 우리 번역 우선, 신규 문자열에 리브랜딩 재적용,
+  check-rebrand.sh로 검증.
+- **Session Attributes 계보**: 코드는 받되 iOS 식별자 파일 4종의 변경은 버린다
+  (upstream-adapted-divergences.md의 복원 조건 참조).
+- **추가형(additive) DB 마이그레이션**: cherry-pick + 스키마 문서 갱신 확인.
+  파괴적 마이그레이션(컬럼 삭제·타입 변경·데이터 변환)은 여전히 정밀 레인.
+
 #### 2-3. 정밀 레인: LLM 정밀 분석 + 대화형 승인
 
 **분석** (신호는 참고 자료일 뿐, 판단은 여기서):
