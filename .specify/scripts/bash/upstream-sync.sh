@@ -174,8 +174,9 @@ cmd_signals() {
         echo "CLEAN"
     else
         echo "CONFLICT"
-        # --name-only 출력부에서 충돌 파일 추출
-        sed -n '2,$p' /tmp/mt.$$ | grep -E '^[^ ]' | awk "NR<=20" || true
+        # 충돌 파일 추출 — stage 행(<mode> <oid> <stage>\t<path>)만 사용한다.
+        # 정보성 메시지(Auto-merging 등)를 섞으면 충돌 아닌 파일이 충돌로 보인다.
+        grep -E '^[0-9]{6} [0-9a-f]{40} [123]	' /tmp/mt.$$ | cut -f2 | sort -u | awk "NR<=20" || true
     fi
     rm -f /tmp/mt.$$
 
