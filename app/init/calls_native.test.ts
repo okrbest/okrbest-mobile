@@ -126,11 +126,25 @@ describe('onVoIPTokenUpdated', () => {
         expect(storeVoIPDeviceToken).toHaveBeenCalledWith('');
     });
 
-    // The shared expo-application mock in test/setup.ts sets applicationId
-    // to 'com.okrbest.otalk', so isBetaApp is true by default in tests.
-    it('stores beta-prefixed token under the default (beta) test config', async () => {
-        const {onVoIPTokenUpdated} = loadAndInit();
-        await onVoIPTokenUpdated({token: 'abc123'});
+    // The shared expo-application mock in test/setup.ts sets applicationId to
+    // 'com.okrbest.otalk', so isBetaApp is false by default; override it here.
+    it('stores beta-prefixed token when isBetaApp is true', async () => {
+        let handler: ((e: VoIPTokenUpdated) => Promise<void>) | undefined;
+        jest.isolateModules(() => {
+            jest.doMock('@utils/general', () => {
+                const actual = jest.requireActual('@utils/general');
+                return {
+                    ...actual,
+                    isBetaApp: true,
+                };
+            });
+            const CallsNativeInit = require('./calls_native').default;
+            CallsNativeInit.init();
+            const mockedOnUpdated = CallsNative.onVoIPTokenUpdated as jest.Mock;
+            const lastCall = mockedOnUpdated.mock.calls[mockedOnUpdated.mock.calls.length - 1];
+            handler = lastCall?.[0];
+        });
+        await handler!({token: 'abc123'});
         expect(storeVoIPDeviceToken).toHaveBeenCalledWith(`${Device.PUSH_NOTIFY_APPLE_REACT_NATIVE}beta-v2:abc123`);
     });
 
