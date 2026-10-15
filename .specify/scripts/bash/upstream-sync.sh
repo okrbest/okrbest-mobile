@@ -105,9 +105,13 @@ cmd_update() {
     last_synced_line="$(git log -1 --date=format:%Y-%m-%d --pretty=tformat:'%H%x1f%s%x1f%ad' "$last_hash" | md_escape_row |
         sed 's/^| /**마지막 반영 커밋:** `/; s/ | \[/` | [/; s/ |$//')"
 
-    local excluded_sec spec_sec
+    local excluded_sec spec_sec memo_sec=""
     excluded_sec="$(appendix_section "제외된 커밋" "사유")"
     spec_sec="$(appendix_section "spec 전환 커밋" "spec")"
+    # 사람이 작성하는 자유 형식 메모 절 — 있으면 그대로 보존한다
+    if [[ -f "$LEDGER" ]] && grep -q "^## 후속 작업 메모" "$LEDGER"; then
+        memo_sec="$(awk '/^## 후속 작업 메모/{f=1; print; next} f && /^## /{exit} f{print}' "$LEDGER")"
+    fi
 
     {
         echo "# upstream-main 미반영 커밋 목록"
@@ -128,6 +132,10 @@ cmd_update() {
         echo "$excluded_sec"
         echo
         echo "$spec_sec"
+        if [[ -n "$memo_sec" ]]; then
+            echo
+            echo "$memo_sec"
+        fi
     } >"$LEDGER"
 
     echo "updated: $LEDGER (남은 커밋 ${total}개)"
