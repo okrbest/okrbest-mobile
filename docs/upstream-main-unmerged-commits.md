@@ -3,11 +3,11 @@
 `HEAD`에 반영되지 않은 `upstream-main`(mattermost/mattermost-mobile) 커밋 목록 (오래된 순).
 `/speckit-sync` 스킬이 이 목록을 갱신·소비한다. 반영 완료된 커밋은 목록에서 제거된다.
 
-- 갱신일: 2026-10-21 13:30
+- 갱신일: 2026-10-27 13:35
 - 기준: `git log --no-merges HEAD..upstream-main` − 처리 완료(cherry-pick/adapt 커밋 본문의 upstream 참조, 하단 부록의 제외·spec 전환)
 - 남은 커밋: 0개
 
-**마지막 반영 커밋:** `33b237a3` | [Bump app build and version number (#10261)](https://github.com/mattermost/mattermost-mobile/commit/33b237a3cefa0fce3bed1fe793fd8955e72af649) | 2026-10-20
+**마지막 반영 커밋:** `a635f57c` | [chore: Update NOTICE.txt file with updated dependencies (#10277)](https://github.com/mattermost/mattermost-mobile/commit/a635f57cd32810697c0c9b33dd9eb479ca44c95a) | 2026-10-26
 
 | 커밋 해시 | 커밋 제목 | 커밋 일자 |
 |---|---|---|
