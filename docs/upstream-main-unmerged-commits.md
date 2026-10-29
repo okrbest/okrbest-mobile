@@ -3,11 +3,11 @@
 `HEAD`에 반영되지 않은 `upstream-main`(mattermost/mattermost-mobile) 커밋 목록 (오래된 순).
 `/speckit-sync` 스킬이 이 목록을 갱신·소비한다. 반영 완료된 커밋은 목록에서 제거된다.
 
-- 갱신일: 2026-10-27 13:35
+- 갱신일: 2026-10-29 14:16
 - 기준: `git log --no-merges HEAD..upstream-main` − 처리 완료(cherry-pick/adapt 커밋 본문의 upstream 참조, 하단 부록의 제외·spec 전환)
 - 남은 커밋: 0개
 
-**마지막 반영 커밋:** `a635f57c` | [chore: Update NOTICE.txt file with updated dependencies (#10277)](https://github.com/mattermost/mattermost-mobile/commit/a635f57cd32810697c0c9b33dd9eb479ca44c95a) | 2026-10-26
+**마지막 반영 커밋:** `0ec1413a` | [\[MM-71089\] Log websocket client creation errors (#10266)](https://github.com/mattermost/mattermost-mobile/commit/0ec1413a1a8bd595c2f70f144d7de02051d382e7) | 2026-10-28
 
 | 커밋 해시 | 커밋 제목 | 커밋 일자 |
 |---|---|---|
