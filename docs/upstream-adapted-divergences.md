@@ -22,7 +22,7 @@ CLAUDE.md에 있으므로 여기에 적지 않는다.
 |---|---|---|
 | `fbfd407e5` Session Attributes 수집 모듈 | [88a23376](https://github.com/mattermost/mattermost-mobile/commit/88a23376bbae89473a239df44f1fc5b6944b2aa8) (#9830) | iOS 식별자 파일 4개의 변경을 버렸다 — 아래 참조 |
 | `9eb671e33` DM 통화 타일 순서 안정화 | [7e527fde](https://github.com/mattermost/mattermost-mobile/commit/7e527fde5f6849c63aeab7681d4e729f58d0842b) (#10153) | 신규 테스트 1건이 파일 전체 실행에서만 타임아웃 — 아래 참조 |
-| `26c0c5d3e` Fastfile Android 릴리스 lane 수정 | — (포크 자체 변경) | update_identifiers의 패키지 이동 블록 제거 + 아포스트로피 대응 — 아래 참조 |
+| `f15b51cf8` Fastfile Android 릴리스 lane 수정 | — (포크 자체 변경) | update_identifiers의 패키지 이동 블록 제거 + 아포스트로피 대응 — 아래 참조 |
 
 ---
 
