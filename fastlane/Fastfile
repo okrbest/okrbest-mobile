@@ -3,6 +3,7 @@ fastlane_require 'aws-sdk-s3'
 fastlane_require 'erb'
 fastlane_require 'json'
 fastlane_require 'pathname'
+require 'shellwords'
 
 skip_docs
 
@@ -765,7 +766,9 @@ platform :ios do
 
   def build_ios
     app_name =  ENV['APP_NAME'] || 'Mattermost Beta'
-    app_name_sub = app_name.gsub(" ", "_")
+    # Artifact file names drop the apostrophe (O'talk -> Otalk): quoting bugs wait in
+    # every shell/CI/URL that touches the file, while the display name keeps it
+    app_name_sub = app_name.gsub(" ", "_").delete("'")
     config_mode = ENV['BUILD_FOR_RELEASE'] == 'true' ? 'Release' : 'Debug'
     method = ENV['IOS_BUILD_EXPORT_METHOD'].nil? || ENV['IOS_BUILD_EXPORT_METHOD'].empty? ? 'ad-hoc' : ENV['IOS_BUILD_EXPORT_METHOD']
 
@@ -864,16 +867,21 @@ platform :android do
   lane :update_identifiers do
     # Set the name for the app
     app_name =  ENV['APP_NAME'] || 'Mattermost Beta'
-    sh "echo '#{app_name}' > ../fastlane/metadata/android/en-US/title.txt"
+
+    # The name can contain an apostrophe (O'talk): write the file without a shell,
+    # and escape it as \' for Android string resources (aapt rejects a raw one)
+    File.write('../fastlane/metadata/android/en-US/title.txt', "#{app_name}\n")
     android_change_string_app_name(
-        newName: app_name,
+        newName: app_name.gsub("'") { "\\'" },
         stringsFile: './android/app/src/main/res/values/strings.xml'
     )
 
+    # R1 (specs/002-otalk-self-distribution/research.md): the store identity lives only in
+    # applicationId (com.okrbest.otalk); the Gradle namespace and the Java/Kotlin source
+    # package stay com.mattermost.rnbeta. The manifest package attribute, the namespace
+    # and the source tree must therefore not be rewritten here.
     package_id = ENV['MAIN_APP_IDENTIFIER'] || 'com.okrbest.otalk'
-    android_change_package_identifier(newIdentifier: package_id, manifest: './android/app/src/main/AndroidManifest.xml')
     android_update_application_id(app_folder_name: 'android/app', application_id: package_id)
-    android_update_namespace(app_folder_name: 'android/app', namespace: package_id)
 
     app_scheme = ENV['APP_SCHEME'] || 'mattermost'
     find_replace_string(
@@ -891,56 +899,6 @@ platform :android do
         new_string: "scheme=\"#{app_auth_scheme}\"",
     )
 
-    helpers_dir = './android/app/src/main/java/com/mattermost/helpers/'
-    beta_dir = './android/app/src/main/java/com/mattermost/rnbeta/'
-    release_dir = "./android/app/src/main/java/#{package_id.gsub '.', '/'}/"
-    if release_dir != beta_dir
-      unless Dir.exist?(".#{release_dir}")
-        FileUtils.mkdir_p ".#{release_dir}"
-      end
-
-      sh "mv .#{beta_dir}* .#{release_dir}"
-
-      Dir.glob(".#{release_dir}*.java") do |item|
-        find_replace_string(
-            path_to_file: item[1..-1],
-            old_string: 'package com.okrbest.otalk;',
-            new_string: "package #{package_id};"
-        )
-      end
-
-      Dir.glob(".#{release_dir}*.kt") do |item|
-        find_replace_string(
-            path_to_file: item[1..-1],
-            old_string: 'package com.okrbest.otalk',
-            new_string: "package #{package_id}"
-        )
-      end
-
-      Dir.glob('../android/app/src/main/java/com/mattermost/share/*.java') do |item|
-        find_replace_string(
-            path_to_file: item[1..-1],
-            old_string: 'import com.okrbest.otalk.MainApplication;',
-            new_string: "import #{package_id}.MainApplication;"
-        )
-      end
-
-      Dir.glob('../android/app/src/main/java/com/mattermost/helpers/*.java') do |item|
-        find_replace_string(
-            path_to_file: item[1..-1],
-            old_string: 'import com.okrbest.otalk.*;',
-            new_string: "import #{package_id}.*;"
-        )
-      end
-
-      Dir.glob('../android/app/src/main/java/com/mattermost/helpers/*.kt') do |item|
-        find_replace_string(
-            path_to_file: item[1..-1],
-            old_string: 'import com.okrbest.otalk.*',
-            new_string: "import #{package_id}.*"
-        )
-      end
-    end
   end
 
   lane :replace_assets do
@@ -1012,7 +970,8 @@ platform :android do
 
   def move_android_to_root
     app_name =  ENV['APP_NAME'] || 'Mattermost Beta'
-    app_name_sub = app_name.gsub(" ", "_")
+    # Artifact file names drop the apostrophe (O'talk -> Otalk), same as the iOS lane
+    app_name_sub = app_name.gsub(" ", "_").delete("'")
     build_task = ENV['ANDROID_BUILD_TASK'].nil? || ENV['ANDROID_BUILD_TASK'].empty? ? 'assemble' : ENV['ANDROID_BUILD_TASK']
     build_task = build_task.split(",")
 
@@ -1039,7 +998,7 @@ platform :android do
           end
           new_apk_path = "#{Pathname.new(File.expand_path(File.dirname(__FILE__))).parent.to_s}/#{name}.apk"
           paths.push(new_apk_path)
-          sh "mv #{apk} #{new_apk_path}"
+          sh "mv #{apk.shellescape} #{new_apk_path.shellescape}"
           UI.message("APK PATH \"#{new_apk_path}\", #{filterName}")
         end
       end
@@ -1050,7 +1009,7 @@ platform :android do
     if build_task.include?("bundle")
       aab = lane_context[SharedValues::GRADLE_AAB_OUTPUT_PATH]
       new_aab_path = "#{Pathname.new(File.expand_path(File.dirname(__FILE__))).parent.to_s}/#{app_name_sub}.aab"
-      sh "mv #{aab} #{new_aab_path}"
+      sh "mv #{aab.shellescape} #{new_aab_path.shellescape}"
       UI.message("AAB PATH \"#{new_aab_path}\"")
     end
   end

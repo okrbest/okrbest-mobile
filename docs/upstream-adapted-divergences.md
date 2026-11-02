@@ -22,6 +22,7 @@ CLAUDE.md에 있으므로 여기에 적지 않는다.
 |---|---|---|
 | `fbfd407e5` Session Attributes 수집 모듈 | [88a23376](https://github.com/mattermost/mattermost-mobile/commit/88a23376bbae89473a239df44f1fc5b6944b2aa8) (#9830) | iOS 식별자 파일 4개의 변경을 버렸다 — 아래 참조 |
 | `9eb671e33` DM 통화 타일 순서 안정화 | [7e527fde](https://github.com/mattermost/mattermost-mobile/commit/7e527fde5f6849c63aeab7681d4e729f58d0842b) (#10153) | 신규 테스트 1건이 파일 전체 실행에서만 타임아웃 — 아래 참조 |
+| `26c0c5d3e` Fastfile Android 릴리스 lane 수정 | — (포크 자체 변경) | update_identifiers의 패키지 이동 블록 제거 + 아포스트로피 대응 — 아래 참조 |
 
 ---
 
@@ -44,6 +45,29 @@ com.okrbest.otalk 배포 파이프라인(specs/002)을 서명 단계에서 깨�
 (2) upstream 88a23376의 식별자 파일 4개 변경을 복원,
 (3) 위치 권한 설명문은 O'talk 문구로 번역·조정.
 이 전에는 후속 SA 커밋이 이 4개 파일을 다시 건드릴 때 같은 기준으로 버린다.
+
+---
+
+## Fastfile update_identifiers — 패키지 이동 블록 제거 + 아포스트로피 대응 (포크 자체 변경)
+
+**무엇이 다른가.** sync adapt가 아니라 포크 자체 수정이지만, upstream이 Fastfile을
+주기적으로 변경하므로 후속 sync 충돌에 대비해 기록한다. upstream의 Android
+`update_identifiers` lane은 릴리스 빌드 때 ① manifest package 속성 변경,
+② Gradle namespace 변경, ③ `com/mattermost/rnbeta/` 소스를 릴리스 패키지
+디렉터리로 이동 + package/import 선언 재작성을 수행한다. 우리 포크는 R1 결정
+(specs/002-otalk-self-distribution/research.md — applicationId만 `com.okrbest.otalk`,
+namespace·Java 패키지는 `com.mattermost.rnbeta` 유지)에 따라 이 세 가지를 **전부
+제거**했다. 그대로 두면 소스가 이동된 채 namespace만 바뀌어 BuildConfig 참조가
+깨진다(2026-11-03 릴리스 빌드에서 실증).
+
+**추가 수정.** 앱 이름 `O'talk`의 아포스트로피 대응: title.txt는 셸 대신
+`File.write`로 쓰고, strings.xml에는 `\'`로 이스케이프해 넘기고, 산출물 `mv`는
+`shellescape` 처리한다. 산출물 파일명은 아포스트로피를 제거해 `Otalk.aab`/
+`Otalk*.apk`/`Otalk.ipa`로 만든다(표시 이름은 O'talk 유지).
+
+**후속 sync 지침.** upstream이 이 lane(패키지 이동 블록 포함)을 건드리는 커밋은
+충돌이 정상이다. 해소 기준: 패키지 이동·namespace 변경은 계속 버리고, 앱 이름을
+셸·XML에 보간하는 새 코드에는 같은 이스케이프를 적용한다.
 
 ---
 
