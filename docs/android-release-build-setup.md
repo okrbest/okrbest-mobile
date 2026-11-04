@@ -125,9 +125,9 @@ cd android && ./gradlew help       # 구성 단계 통과 (최초 실행은 grad
 ## 8. 배포 빌드 실행
 
 ```bash
-# Sentry: fastlane/.env.android.release의 SENTRY_ENABLED가 true이고 org가
-# upstream 값이면 임시로 false로 바꾼다(T025 미결). --env 파일은 Dotenv.overload로
-# 로드되어 셸 환경 변수를 덮어쓰므로, 셸에서 넘기는 것으로는 못 바꾼다.
+# Sentry: fastlane/.env.android.release의 SENTRY_ENABLED는 false다(OKR Best Sentry
+# 프로젝트 미정, T025). 켜려면 SENTRY_ORG/PROJECT를 OKR Best 값으로 바꾸고 SENTRY_AUTH_TOKEN을
+# 준비한다. --env 파일은 Dotenv.overload로 로드되어 셸 환경 변수를 덮어쓴다.
 
 export PATH="$HOME/.rbenv/shims:$PATH"
 cd <저장소 루트>/fastlane
