@@ -1,19 +1,26 @@
-Requires Mattermost Server v11.7.0+. Older servers may not be able to connect or have unexpected behavior.
+O'talk is the official mobile app for OKRBEST, the team collaboration tool that connects goals (OKRs), tasks and conversations. Keep scattered chats, work and objectives in one place, and stay aligned with your team wherever you are.
 
--------
+Key features
 
-Mattermost is secure workplace messaging from behind your firewall.
+- Channels and direct messages: create a channel per project, talk one-to-one or team-wide, and keep context with threads.
+- Decisions and files in one place: share photos, documents and links right in the channel and build up a company knowledge base.
+- Search: find past discussions and files in seconds.
+- Push notifications: never miss a mention, reply or direct message.
+- Voice and video calls: start a call directly from a channel.
+- AI agents: summarize long threads and ask questions inside a channel (when the AI option is enabled for your workspace).
+- Playbooks: run recurring procedures as checklists and track progress.
+- Access control: channel-level permissions and guest accounts keep information with the people who need it.
 
-- Discuss topics in private groups, one-to-one or team-wide
-- Easily share and view image files 
-- Connect in-house systems with webhooks and Slack-compatible integrations
+Enterprise security
 
-To use this app, you need a URL for a Mattermost server. 
+- Your data stays in your organization's OKRBEST workspace. Air-gapped deployments are fully supported.
+- Access control and audit history that follow your organization's security policy.
 
--------
+Getting started
 
-Host your own server: https://about.mattermost.com/download 
+To use this app you need your organization's OKRBEST workspace address (server URL) and an account. If your team does not have a workspace yet, start with the free plan or request a demo at https://okr.best.
 
-Terms of Service: http://about.mattermost.com/terms/ 
-
-Contribute to the project: https://github.com/mattermost/mattermost-mobile
+- About OKRBEST: https://okr.best
+- FAQ: https://okr.best/faq
+- Terms of Service: https://okr.best/terms-of-service
+- Privacy Policy: https://okr.best/privacy-policy

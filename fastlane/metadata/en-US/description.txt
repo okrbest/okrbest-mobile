@@ -1,13 +1,26 @@
-Mattermost is workplace messaging from behind your firewall.
+O'talk is the official mobile app for OKRBEST, the team collaboration tool that connects goals (OKRs), tasks and conversations. Keep scattered chats, work and objectives in one place, and stay aligned with your team wherever you are.
 
-- Discuss topics in private groups, one-to-one or team-wide
-- Find what you're looking for with full text search, filters and #hashtags
-- Easily share images, video, audio and files 
-- Personalize your experience with custom colors, formatting and fonts
-- Connect in-house systems with webhooks and Slack-compatible integrations
+Key features
 
-To use this app, you need a "Server URL" from a Mattermost server. To host your own server go to https://about.mattermost.com/download
+- Channels and direct messages: create a channel per project, talk one-to-one or team-wide, and keep context with threads.
+- Decisions and files in one place: share photos, documents and links right in the channel and build up a company knowledge base.
+- Search: find past discussions and files in seconds.
+- Push notifications: never miss a mention, reply or direct message.
+- Voice and video calls: start a call directly from a channel.
+- AI agents: summarize long threads and ask questions inside a channel (when the AI option is enabled for your workspace).
+- Playbooks: run recurring procedures as checklists and track progress.
+- Access control: channel-level permissions and guest accounts keep information with the people who need it.
 
-Find the Terms of Service for this app here: http://www.mattermost.com/terms/
+Enterprise security
 
-This is a reference implementation of an open source Mattermost app available at: https://github.com/mattermost/mattermost-mobile
+- Your data stays in your organization's OKRBEST workspace. Air-gapped deployments are fully supported.
+- Access control and audit history that follow your organization's security policy.
+
+Getting started
+
+To use this app you need your organization's OKRBEST workspace address (server URL) and an account. If your team does not have a workspace yet, start with the free plan or request a demo at https://okr.best.
+
+- About OKRBEST: https://okr.best
+- FAQ: https://okr.best/faq
+- Terms of Service: https://okr.best/terms-of-service
+- Privacy Policy: https://okr.best/privacy-policy

@@ -1,5 +1,5 @@
-This version is compatible with Mattermost servers v11.7.0+.
+This version of O'talk requires an OKRBEST workspace (server) on a compatible version. Older servers may not be able to connect or may behave unexpectedly.
 
-Please see [changelog](https://docs.mattermost.com/administration/mobile-changelog.html) for full release notes. If you're interested in helping beta test upcoming versions before they are released, please see our [documentation](https://github.com/mattermost/mattermost-mobile#testing).
+Product information: https://okr.best
 
 ### Downloads
