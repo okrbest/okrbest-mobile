@@ -1,0 +1,10 @@
+First release of O'talk.
+
+• Talk with your team in channels, direct messages and threads
+• Share photos, documents and links, and search past work
+• Push notifications for mentions, replies and direct messages
+• Voice and video calls started right from a channel
+• Share files from other apps straight into an O'talk channel
+• AI agents and playbooks (depending on your workspace settings)
+
+You need your organization's OKRBEST workspace address and an account to sign in.
