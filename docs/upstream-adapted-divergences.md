@@ -23,6 +23,7 @@ CLAUDE.md에 있으므로 여기에 적지 않는다.
 | `fbfd407e5` Session Attributes 수집 모듈 | [88a23376](https://github.com/mattermost/mattermost-mobile/commit/88a23376bbae89473a239df44f1fc5b6944b2aa8) (#9830) | iOS 식별자 파일 4개의 변경을 버렸다 — 아래 참조 |
 | `9eb671e33` DM 통화 타일 순서 안정화 | [7e527fde](https://github.com/mattermost/mattermost-mobile/commit/7e527fde5f6849c63aeab7681d4e729f58d0842b) (#10153) | 신규 테스트 1건이 파일 전체 실행에서만 타임아웃 — 아래 참조 |
 | `f15b51cf8` Fastfile Android 릴리스 lane 수정 | — (포크 자체 변경) | update_identifiers의 패키지 이동 블록 제거 + 아포스트로피 대응 — 아래 참조 |
+| `242b85f63` Intune MAM 비활성화 | — (포크 자체 변경) | iOS env 3개·빌드 워크플로 3개의 `INTUNE_ENABLED`를 false로 고정 — 아래 참조 |
 
 ---
 
@@ -86,3 +87,25 @@ namespace·Java 패키지는 `com.mattermost.rnbeta` 유지)에 따라 이 세 �
 **처리.** 제품 코드 결함이 아니고 upstream이 활발히 재작성 중인 테스트 파일이므로
 포크에서 고치지 않고 알려진 red로 둔다. 후속 sync에서 이 파일을 건드리는 커밋이
 오면 그 시점에 해소 여부를 재확인한다.
+
+## Intune MAM 비활성화 — INTUNE_ENABLED=false 고정 (포크 자체 변경)
+
+**반영 상태.** `fastlane/.env.ios.{release,beta,pr}`와
+`.github/workflows/{build-ios-release,build-ios-beta,build-pr}.yml`의 `INTUNE_ENABLED`가
+`false`다. upstream은 세 곳 모두 `true`이며, `INTUNE_CLIENT_ID`에 Mattermost 명의의
+Entra ID 앱 등록 ID를 둔다. 우리는 ID 값은 그대로 두고 플래그만 껐다.
+
+**왜.** 이 ID의 Entra ID 앱 등록에는 Mattermost 번들 ID의 리다이렉트 URI만 있어
+`msauth.com.okrbest.otalk://auth`로는 MSAL 인증이 완료되지 않는다. 또 Intune 보호 앱
+목록에 O'talk가 없어 고객사 Intune 콘솔에서 선택할 수 없다. 켜 두면 동작하지 않는
+SDK와 URL 스킴 7개가 빌드에 들어갈 뿐이다. `ios/Podfile`은 이 플래그로
+`mattermost-intune` 파드를 조건부 포함하고 `AppDelegate.swift`는 `#if canImport`로
+감싸므로, 코드 변경 없이 플래그만으로 깨끗하게 빠진다.
+
+**sync 시 주의.** upstream이 env 파일이나 워크플로의 Intune 줄을 건드리는 커밋은
+cherry-pick 후 `INTUNE_ENABLED`가 `false`로 남아 있는지 확인한다. `.env.ios.simulator`와
+`e2e-detox-pr.yml`은 upstream도 false라 차이가 없다.
+
+**되돌릴 조건.** Intune을 요구하는 고객이 생겨 OKR Best 명의로 Entra ID 앱을 등록하고
+(리다이렉트 URI `msauth.com.okrbest.otalk://auth`), Microsoft Intune 파트너 앱 등록을
+마쳤을 때 `INTUNE_CLIENT_ID`를 새 값으로 바꾸고 플래그를 켠다.
