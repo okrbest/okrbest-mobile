@@ -8,7 +8,7 @@ on:
 env:
   NODE_VERSION: 24.15.0
   TERM: xterm
-  INTUNE_ENABLED: 'true'
+  INTUNE_ENABLED: 'false'
 
 jobs:
   test:

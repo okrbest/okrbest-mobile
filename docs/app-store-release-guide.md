@@ -279,7 +279,7 @@ INCREMENT_BUILD_NUMBER=true BUILD_NUMBER=834 bundle exec fastlane set_app_build_
 | `SENTRY_ENABLED` | `false` | 업스트림 Sentry 조직으로 심볼 업로드 시도 방지 (T025) |
 | `IOS_ICLOUD_CONTAINER` | `iCloud.com.okrbest.otalk` | 3.1절과 일치 |
 | `MATCH_APP_IDENTIFIER` | 번들 ID 3개 | 6.2절과 일치 |
-| `INTUNE_ENABLED` / `INTUNE_CLIENT_ID` | `true` / Mattermost의 Azure 앱 ID | **결정 필요.** OKR Best가 Microsoft Intune MAM을 쓰지 않으면 `false`로 바꾼다. 켜 두면 Mattermost 명의의 Azure 클라이언트 ID가 Info.plist에 들어간다 |
+| `INTUNE_ENABLED` | `false` | Microsoft Intune 앱 보호(MAM)를 끈다. 남아 있는 `INTUNE_CLIENT_ID`는 Mattermost 명의의 Entra ID 앱 등록이라 O'talk 번들 ID의 리다이렉트 URI가 없어 동작하지 않는다. Intune 고객이 생기면 OKR Best 명의로 앱을 등록해 새 ID로 교체한 뒤 켠다 |
 
 ### 7.3 A안: Xcode에서 Archive → 업로드 (처음 권장)
 
